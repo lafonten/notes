@@ -1,0 +1,4 @@
+amacımız araya girdiğimiz kullanıcıya response olarak indirme yaptığnıda herhangibir .exe yüklemek istediğinde araya girip kendi .exe virüslü programımızı koyuyoruz.
+
+./mitmdump -s denem.py --> deneme.py dosyasını mitm'da çalıştırmamıza olanak sağlıyor
+

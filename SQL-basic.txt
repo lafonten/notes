@@ -1,0 +1,294 @@
+Database Nedir?
+    database çok yaygın kullanılan bir araçtır. database temelde bilgi depolanma alanlarıdır. sistem hakkında kullanıcı hakkında depolanan verilerin daha sonra etkileşime geçerek kullanılmasıdır. client server mimarisinde client ile server arasında akan trafiği bilgiyi kaydetip daha sonra kullanıma sunan yapılardır. Bu yapı olmadan verilerin veya bilgilerin işlenmesi mümkün olmaz ya da çok maliyetli olur. Örneğin facebook herkesin girdiği kişisel bilgileri paylaşımları bir alanda tutar. bu alan olmasaydı o veriler ya kullanıcının cihazında yada server tarafında çok fazla yük bindirecek ve kullanılmaz hale getirecektir. ama database araçları sayesinde bilgi başka bir alanda depolanır ihtiyaç halinde istenen bilginin kısımları elde edilir ve işlemler yapılır. yani x kullanıcının profiline girdiğinizde sadece x kullanıcının verilerine ulaşıp bilgi edinmenizi sağlar.
+
+    2 tip veritabanı-database vardır;
+
+      1.relational databases (SQL)
+          Yapılandırılmış verileri depolayın, yani bu veritabanına eklenen veriler bir yapıyı takip eder. Örneğin, bir kullanıcı hakkında toplanan veriler first_name, last_name, email_address, username ve password'den oluşur. Yeni bir kullanıcı katıldığında, veritabanına bu yapıyı takip eden bir giriş yapılır. Bu yapılandırılmış veriler bir tablodaki satırlarda ve sütunlarda depolanır (hepsi kısa süre sonra ele alınacaktır); daha sonra iki veya daha fazla tablo (örneğin, user ve order_history) arasında ilişkiler kurulabilir, dolayısıyla ilişkisel veritabanları terimi kullanılır.
+      2.non-relational databases (NoSQL)
+          Verileri yukarıdaki şekilde depolamak yerine, verileri tablo olmayan bir biçimde depolayın. Örneğin, farklı türlerde ve miktarlarda veri içerebilen belgeler taranıyorsa ve tablo olmayan bir biçim gerektiren bir veritabanında depolanıyorsa.
+
+        
+      Hangi veritabanının seçilmesi gerektiği açısından, her zaman veritabanının kullanılacağı bağlama bağlıdır. İlişkisel veritabanları genellikle, depolanan verilerin tutarlı bir biçimde güvenilir bir şekilde alınacağı ve doğruluğun önemli olduğu durumlarda, örneğin e-ticaret işlemlerini işlerken kullanılır. Öte yandan, alınan verilerin biçimi büyük ölçüde değişebildiği ancak aynı yerde toplanması ve düzenlenmesi gerektiği durumlarda, örneğin kullanıcı tarafından oluşturulan içerikleri toplayan sosyal medya platformlarında, ilişkisel olmayan veritabanları daha iyi kullanılır.
+
+
+
+      sql temelleri;
+        table-row-column dan oluşur.
+        Primary_Keys: Birincil anahtar, belirli bir sütunda toplanan verilerin benzersiz olduğundan emin olmak için kullanılır. Yani, bir tabloda depolanan her kaydı tanımlamanın bir yolu, o kayda özgü ve o tabloda başka hiçbir kayıt tarafından tekrarlanmayan bir değer olması gerekir. Bir üniversitedeki kayıt numaralarını düşünün; bunlar bir öğrenciye atanan numaralardır, böylece kayıtlarda benzersiz bir şekilde tanımlanabilirler (bazen öğrenciler aynı ada sahip olabilir). Her tabloda birincil anahtar olarak bir sütun seçilmelidir; örneğimizde, her kitap için benzersiz bir kimlik oluşturulduğundan "id" en mantıklısı olacaktır, çünkü kitaplar aynı yayın tarihine veya (daha nadir durumlarda) kitap başlığına sahip olabilir. Bir tabloda yalnızca bir birincil anahtar sütunu olabileceğini unutmayın.
+
+        Foreign_Keys: Yabancı anahtar, veritabanındaki başka bir tabloda da bulunan bir tablodaki bir sütundur (veya sütunlardır) ve bu nedenle iki tablo arasında bir bağlantı sağlar. Örneğimizde, "Books" tablomuza bir "author_id" alanı eklemeyi düşünün; bu daha sonra yabancı anahtar görevi görecektir çünkü Books tablomuzdaki author_id, author tablosundaki "id" sütununa karşılık gelir. Yabancı anahtarlar, ilişkisel veritabanlarındaki farklı tablolar arasındaki ilişkilere izin veren şeydir. Bir tabloda birden fazla yabancı anahtar sütunu olabileceğini unutmayın.
+
+        
+
+SQL Nedir?
+
+    - structured query language, veri tabanından bilgi çekmek için kullandığımız dildir.
+    - excel yapısı tablolardan oluşur ve excel tablosu gibidir.
+    - column sütunlar
+    - row sıralar
+    
+Temel SQL Komutları;
+
+    +SELECT – Veritabanından veri seçmek için.
+      #  SELECT column1, column2 FROM table_name;
+
+    +WHERE – Şart eklemek için.
+      #  SELECT * FROM table_name WHERE condition;
+
+    +INSERT INTO – Tabloya veri eklemek için.
+      #  INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+
+    +UPDATE – Var olan veriyi güncellemek için. 
+      #  UPDATE table_name SET column1 = value1 WHERE condition;
+    
+    +DELETE – Veriyi silmek için.
+      #  DELETE FROM table_name WHERE condition;
+
+    +Veri Sıralama
+      #  ORDER BY – Veriyi sıralamak için.
+      #  SELECT * FROM table_name ORDER BY column1 ASC|DESC;
+
+    +Veri Gruplama
+      #  GROUP BY – Aynı değerleri gruplayarak sonuç döndürmek için.
+      #  SELECT column1, COUNT(*) FROM table_name GROUP BY column1;
+
+    +Koşullu Seçimler
+      #  LIKE – Belirli bir şablona uyan sonuçları seçmek için.
+      #  SELECT * FROM table_name WHERE column1 LIKE 'a%';
+      #  IN – Birden fazla değeri kontrol etmek için.
+      #  SELECT * FROM table_name WHERE column1 IN (value1, value2);
+
+    +Fonksiyonlar
+      #  COUNT – Kayıt sayısını bulmak için.
+      #  SELECT COUNT(column1) FROM table_name;
+        
+    +SUM – Belirli bir sütundaki değerlerin toplamını almak için.
+      #  SELECT SUM(column_name) FROM table_name;
+      #  AVG – Ortalama almak için.
+      #  SELECT AVG(column_name) FROM table_name;
+
+    +Join İşlemleri
+      #  INNER JOIN – Eşleşen kayıtları almak için.
+      #  SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;
+      #  LEFT JOIN – Sol tablodaki tüm kayıtları ve sağ tablodaki eşleşen kayıtları almak için.
+      #  SELECT columns FROM table1 LEFT JOIN table2 ON table1.column = table2.column;
+      #  RIGHT JOIN – Sağ tablodaki tüm kayıtları ve sol tablodaki eşleşen kayıtları almak için.
+      #  SELECT columns FROM table1 RIGHT JOIN table2 ON table1.column = table2.column;
+
+    +Alt Sorgular
+      #  Subquery – Bir sorgu içinde başka bir sorgu kullanmak için.
+      #  SELECT * FROM table_name WHERE column1 = (SELECT column1 FROM another_table WHERE condition);
+
+
+Gelişmiş Join İşlemleri;
+_________________________
+
+    +FULL OUTER JOIN – İki tablodaki tüm kayıtları getirir (eşleşmeyen kayıtlar NULL olarak döner).
+      #  SELECT columns FROM table1 FULL OUTER JOIN table2 ON table1.column = table2.column;
+
+    +SELF JOIN – Aynı tabloya kendisiyle join yapmak için (örneğin, bir çalışan tablosunda yönetici-çalışan ilişkisini bulmak için).
+      #  SELECT a.employee_name, b.manager_name
+         FROM employees a
+         INNER JOIN employees b ON a.manager_id = b.employee_id;
+
+    +CASE İfadeleri - Belirli bir sütunda koşula göre farklı değerler döndürmek için.
+      #   SELECT column1,
+             CASE
+                 WHEN condition1 THEN 'Result1'
+                 WHEN condition2 THEN 'Result2'
+                 ELSE 'DefaultResult'
+             END AS new_column
+         FROM table_name;
+
+
+Pencere Fonksiyonları;
+_________________________
+
+     +ROW_NUMBER – Her satıra benzersiz bir sıra numarası vermek için.
+     #      SELECT column1, 
+                ROW_NUMBER() OVER(PARTITION BY column2 ORDER BY column3) AS row_num
+            FROM table_name;
+
+     +RANK ve DENSE_RANK – Satırları sıralamak ve aynı sıralamaya sahip satırlarda aynı rank değeri vermek için.
+    #       SELECT column1,
+                RANK() OVER(ORDER BY column2 DESC) AS rank
+            FROM table_name;
+
+     +LEAD ve LAG – Bir önceki veya bir sonraki satırın değerini getirmek için.
+    #       SELECT column1, 
+                LAG(column2, 1) OVER(ORDER BY column3) AS previous_value
+            FROM table_name;
+
+    +WITH (Common Table Expressions - CTE) CTE – Karmaşık sorguları bölmek veya tekrar kullanılabilir hale getirmek için.
+     #      WITH temp_table AS (
+            SELECT column1, column2 FROM table_name WHERE condition
+            )
+            SELECT * FROM temp_table WHERE another_condition;
+
+    +Recursive CTE-Recursive CTE – Özellikle hiyerarşik veri yapılarıyla çalışırken kullanılır.
+    #       WITH RECURSIVE cte_name AS (
+            SELECT column1, column2 FROM table_name WHERE base_condition
+            UNION ALL
+            SELECT column1, column2 FROM table_name JOIN cte_name ON table_name.column = cte_name.column
+            )
+            SELECT * FROM cte_name;
+
+    +Pivot İşlemleri-PIVOT – Satırları sütunlara dönüştürmek için.
+    #       SELECT *
+            FROM (SELECT column1, column2, column3 FROM table_name)
+            PIVOT (SUM(column3) FOR column1 IN ('Value1', 'Value2')) AS pivot_table;
+
+    +Transaction Yönetimi-TRANSACTION – Veri manipülasyonu işlemlerini topluca yürütmek ve gerekirse geri almak için.
+    #       BEGIN TRANSACTION;
+            UPDATE table_name SET column1 = value1 WHERE condition;
+            INSERT INTO table_name (column1) VALUES (value2);
+            COMMIT;
+
+            -- Veya geri alma --
+            ROLLBACK;
+
+    +Trigger Oluşturma-TRIGGER – Bir olay gerçekleştiğinde otomatik olarak işlem yapmak için.
+    #       CREATE TRIGGER trigger_name
+            AFTER INSERT ON table_name
+            FOR EACH ROW
+            BEGIN
+            -- Trigger işlemleri
+            END;
+
+    +View Oluşturma-VIEW – Karmaşık sorguları sanal tablolar olarak saklamak için.
+
+    #       CREATE VIEW view_name AS
+            SELECT column1, column2 FROM table_name WHERE condition;
+
+
+İleri Düzey Fonksiyonları;
+_________________________
+    +COALESCE – İlk NULL olmayan değeri döndürmek için.
+    #       SELECT COALESCE(column1, column2, 'default_value') FROM table_name;
+            NULLIF – İki değeri karşılaştırır; eşitse NULL, değilse birinci değeri döner.
+    
+    #       SELECT NULLIF(column1, column2) FROM table_name;
+
+
+    +STRING_AGG – Gruplanmış verilerde bir sütunun tüm değerlerini birleştirir (örneğin, belirli bir gruba ait tüm isimleri birleştirmek).
+    #       SELECT department, STRING_AGG(employee_name, ', ') AS employees
+            FROM employees
+            GROUP BY department;
+
+            
+    +JSON Functions – Veriyi JSON formatında depolamak ve sorgulamak için (PostgreSQL gibi veritabanlarında).
+    #       SELECT json_column->>'key' AS value FROM table_name;
+    #       ARRAY Functions – Birden fazla değeri tek bir sütunda array formatında saklamak ve sorgulamak için.
+
+    #       SELECT ARRAY_AGG(column) FROM table_name WHERE condition;
+
+
+İleri Düzey Pencere Fonksiyonları;
+__________________________________
+
+    +NTILE – Veriyi belirli sayıda gruba böler ve her satıra grup numarası verir (örneğin, dört gruba ayırmak için).
+    #       SELECT column1,
+                NTILE(4) OVER(ORDER BY column2) AS quartile
+            FROM table_name;
+
+
+    +CUME_DIST – Her satırın bir sıralama içinde kümülatif dağılımını verir.
+    #       SELECT column1,
+                CUME_DIST() OVER(ORDER BY column2) AS cumulative_distribution
+            FROM table_name;
+
+
+    +PERCENT_RANK – Sıralamada her satırın yüzdelik sırasını verir.
+    #       SELECT column1,
+                PERCENT_RANK() OVER(ORDER BY column2) AS percent_rank
+            FROM table_name;
+
+
+Sorgu Optimizasyonu;
+____________________
+
+    +EXPLAIN – Bir sorgunun nasıl çalıştığını analiz etmek ve optimize etmek için.
+    #      EXPLAIN SELECT * FROM table_name WHERE condition;
+
+
+    +INDEX – Sorgu hızını artırmak için tablo sütunlarına indeks eklemek.
+    #      CREATE INDEX index_name ON table_name(column1, column2);
+
+
+    +UNION vs UNION ALL – Birden fazla sorgu sonucunu birleştirir. UNION çift kayıtları çıkarırken, UNION ALL hepsini getirir (daha hızlıdır).
+    #       SELECT column1 FROM table1
+            UNION
+            SELECT column1 FROM table2;
+
+
+Sorgu Optimizasyonu;
+____________________
+
+    +EXISTS – Alt sorgu sonucu varsa TRUE, yoksa FALSE döndürür. Genellikle performans avantajı sağlar.
+    #       SELECT column1 FROM table_name WHERE EXISTS (SELECT * FROM another_table WHERE condition);
+
+
+    +ANY ve ALL – Belirli bir koşulun alt sorgudaki herhangi bir (ANY) veya tüm (ALL) değeri karşılayıp karşılamadığını kontrol eder.
+    #       SELECT * FROM table_name WHERE column1 > ALL (SELECT column2 FROM another_table);
+
+
+Sorgu Optimizasyonu;
+____________________
+    +SAVEPOINT – Bir transaction içinde bir kontrol noktası oluşturur, böylece işlemi tamamen geri almak yerine belirli bir noktaya kadar geri almak mümkün olur.
+    #       BEGIN;
+            UPDATE table_name SET column1 = value1;
+            SAVEPOINT savepoint_name;
+            INSERT INTO table_name (column1) VALUES (value2);
+            ROLLBACK TO savepoint_name;
+            COMMIT;
+
+
+Sorgu Optimizasyonu;
+____________________
+    +Stored Procedure – Tekrarlanan işlemleri saklamak için, parametre alabilir.
+    #      CREATE PROCEDURE procedure_name (param INT)
+            BEGIN
+            SELECT * FROM table_name WHERE column = param;
+            END;
+
+    +Stored Function – Bir değeri döndüren ve daha karmaşık işlemler yapabilen özel bir işlev oluşturmak için.
+    #       CREATE FUNCTION function_name (param INT) RETURNS INT
+            BEGIN
+            DECLARE result INT;
+            SET result = param * 10;
+            RETURN result;
+            END;
+
+
+
+Sorgu Optimizasyonu;
+____________________
+    +ROLLUP – Birden fazla sütunda toplama işlemleri yaparken, grup toplamlarını da verir.
+    #       SELECT department, employee, SUM(salary)
+            FROM employees
+            GROUP BY ROLLUP(department, employee);
+
+
+    +CUBE – Gruplar arasında tüm kombinasyonların toplamını alır (örneğin, bölge ve departman bazında satışları toplamak).
+    #       SELECT region, department, SUM(sales)
+            FROM sales_data
+            GROUP BY CUBE(region, department);
+
+
+Sorgu Optimizasyonu;
+____________________
+
+    +Kullanıcı Oluşturma – Yeni bir kullanıcı oluşturmak ve ona erişim izni vermek için.
+    #       CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+    #       GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
+
+
+    +Yetki Verme ve Geri Alma – Kullanıcıya belirli işlemler için izin vermek veya izinlerini kaldırmak.
+    #       GRANT SELECT, INSERT ON database_name.table_name TO 'username'@'localhost';
+    #       REVOKE INSERT ON database_name.table_name FROM 'username'@'localhost';
+
+
+    +Güvenlik ve Erişim Kontrolü
+    +Row-Level Security (RLS) – Kullanıcıların yalnızca belirli satırlara erişebilmesi için (PostgreSQL gibi sistemlerde).
+    #       LTER TABLE table_name ENABLE ROW LEVEL SECURITY;

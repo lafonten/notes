@@ -1,0 +1,11 @@
+Sql Sha512 algoritmasý ile þifrelenmektedir.
+https://docs.microsoft.com/en-us/sql/t-sql/functions/hashbytes-transact-sql?view=sql-server-ver15
+
+
+SELECT TOP 10 MUSTERI_NO,ENCRYPTED_PASSWORD FROM MUSTERI_INTERNET  -- müþteri internet veya mobil uygulama login
+ 
+SELECT SysId,Aciklama,KULLANICI_KODU,PASSWORD_HASH FROM SC_KULLANICI -- Kullanýcý optimus login
+
+
+select* from SC_KULLANICI WHERE Durum=1 -- AKTÝF KULLANICILAR
+select* from SC_KULLANICI WHERE Durum=1 AND SISTEM=1-- AKTÝF KULLANICILAR VE SQL YETKÝSÝ OLAN KULLANICILAR

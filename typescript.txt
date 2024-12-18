@@ -1,0 +1,18 @@
+npm install -g typescript --> npm ile typescript kurulumu yapılır
+
+    intro.ts;
+        function selamVer(isim:string){
+            return "Merhaba " + isim
+        }
+
+        let mesaj = selamVer(['Engin','Derin'])
+
+    **intro.ts dosyası oluşturup içerisine kodlarımızı yazıyoruz daha sonra tsc modülünü kullanarak bunu js formatına çeviriyoruz.
+
+            "tsc intro.ts" --> "intro.js" 
+
+    
+
+    değişkenler;
+
+        değişkenleri sınırlandırıyoruz böylece yerine tanımlanacak, 

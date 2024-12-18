@@ -1,0 +1,183 @@
+<> --> tagleri temsil ederi
+<html> --> dil tag'ıdır
+<head> --> head kısmını temsil eder
+<title> --> head kısmında bulunan başlık kısmını temsil eder
+<meta -properties-> --> meta etiktelerinin olduğu yerdir properties'ler değişir ve bilgi içerir
+<!-- --> --> yorum satırı not satırı kısmı olarak kullanılır
+<body> --> body kısmı ekranın orta kısmında bulunan verilerin akışıdır
+elements --> gösteriliecek olarak elemanları temsil eder
+    <h1> --> 1 numaralı h başlığıdır
+    <h2> --> 2 numaralı h başlığıdır bu şekilde 6 ya kadar gider
+
+attribute--> taglerin içine yazdığım özelliklerdir
+    <h1 class="css1"> şeklinde yazılan classlardır
+    sadece class değil direk içerisinde tanımlamalar yapılabilir, aspnet çalışmalarıdna asp attributelarıda eklenir
+    <h1 href="link"> -->href link bildirgecidir link olduğunu söyler
+    target='_blank' -->ayrı bir tabde açmak için kullanılır
+<footer> body içinde bulunur ve en alttaki bilgi kısmıdır
+<b> - Bold text
+
+<strong> - Important text
+
+<i> - Italic text
+
+<em> - Emphasized text
+
+<mark> - Marked text
+
+<small> - Smaller text
+
+<del> - Deleted text
+
+<ins> - Inserted text
+
+<sub> - Subscript text
+
+<sup> - Superscript text
+
+<br> boşluk bırakma, yada paragraf bırakma, aralık bırakma, bir alt satıra geç
+
+<p> paragraf
+
+HTML Nedir?
+
+HTML, "Hiper Metin İşaretleme Dili" anlamına gelir.
+
+HTML, web sayfaları oluşturmak için kullanılan standart işaretleme dilidir.
+
+HTML, bir web sayfasının yapısını tanımlar.
+
+HTML, bir dizi elementten oluşur.
+
+HTML elementleri, içeriğin tarayıcı tarafından nasıl görüntüleneceğini belirtir.
+
+HTML elementleri, içerik parçalarını "bu bir başlık", "bu bir paragraf", "bu bir bağlantı" gibi etiketler.
+
+HTML YAZIM KURALI
+
+<#tag# #attribute-of-tag#="_value_">_values_<#/tag-closer#>
+
+<a href="https://www.w3schools.com">This is a link</a>
+
+<#tag# #attribute-of-tag#="_values_" #attribute-of-tag-2#="_values_" #attribute-of-tag-3#="_values_" #attribute-of-tag-4#="_values_">
+
+<img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142">
+
+CHEATSHEET
+
+<!DOCTYPE html> --> html5 imzası
+
+<html> --> html sayfanın root imzası
+
+<head> --> header kısmı, html sayfanın bilgisini içerir
+
+<title> --> html sayfanın başlık kısmı, bu kısım google’da sizi gösteren kısım
+
+<body> --> sayfanın orta bölümü manasına gelen herşeyin burada gösterildiği yerdir
+
+<h1-h2-h3-h4-h5-h6> --> h başlık tipleridir önem sırası yukarıdan aşağıya doğru gider
+
+<p> --> paragraf yazılan ve paragraf olarak okunan kısımlar
+
+<br> --> satır atlamaya yarar
+
+<a hrf=””> --> burada a html bağlantılarını niteler, htmlde bağlantılar a ile tanımlatılır, href ise link olduğunu belirtir ve o link tanımlanır
+
+<img> --> html resim tanımlaması
+
+src=" " --> resimin kaynağı
+
+alt=" " --> alternatif text için kullanılan alan
+
+width=" " --> resimin genişliğini 
+
+height=" " --> resimin yüksekliği
+
+<p> --> paragraf
+
+style=" " --> stilini ayarlar,renk font gibi
+
+lang=" " --> dil bildirgeci
+
+title=" " --> elementin üstüne gelince beliren kutucukta yazan bilgiler, genelde tanımlama yapmak için kullanılır
+
+<hr> --> yatay olarak ayraç koyar ve üstü ile altı birbirinden ayrır
+
+<pre> --> öğesinin içindeki metin, sabit genişlikte bir yazı tipinde (genellikle Courier) görüntülenir ve hem boşlukları hem de satır sonlarını korur.
+
+STYLE Tanımlamaları:
+
+<tagname style="_property_:_value;…">
+
+ Properties;
+
+Background-color: --> arka plan resmi
+
+Color: --> içerik rengi
+
+Font-family: --> font tiği
+
+Font-size: --> font boyutu
+
+Text-align: --> textin konumu
+
+Html örneği;
+
+EX1:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+</body>
+</html>
+
+<!DOCTYPE html> --> html5 imzası
+
+<html> --> html sayfanın root imzası
+
+<head> --> header kısmı, html sayfanın bilgisini içerir
+
+<title> --> html sayfanın başlık kısmı, bu kısım google’da sizi gösteren kısım
+
+<body> --> sayfanın orta bölümü manasına gelen herşeyin burada gösterildiği yerdir
+
+<h1-h2-h3-h4-h5-h6> --> h başlık tipleridir önem sırası yukarıdan aşağıya doğru gider
+
+<p> --> paragraf yazılan ve paragraf olarak okunan kısımlar
+
+<br> --> satır atlamaya yarar
+
+EX2:
+
+<a href="https://www.w3schools.com">This is a link</a>
+
+<a hrf=””> --> burada a html bağlantılarını niteler, htmlde bağlantılar a ile tanımlatılır, href ise link olduğunu belirtir ve o link tanımlanır
+
+EX3:
+
+<img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142">
+
+<img> --> html resim tanımlaması
+
+src=" " --> resimin kaynağı
+
+alt=" " --> alternatif text için kullanılan alan
+
+width=" " --> resimin genişliğini 
+
+height=" " --> resimin yüksekliği
+
+EX4:
+
+<p style="color:red;">This is a red paragraph.</p>
+
+<p> --> paragraf
+
+style=" " --> kaynağın stilini ayarlar

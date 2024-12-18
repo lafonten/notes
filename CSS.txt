@@ -1,0 +1,269 @@
+CSS --> web sitesinin görsellerini düzenlemeye olanak sağlar. etiket mantığıyla çalışır. htmldeki tagleri yani etikekleri düzenlememizi editlememizi sağlar.
+
+
+Temel;
+    - bütün etiketleri etkilesin;
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    
+    - belirli bir etiketi etkilesin;
+
+        p{
+            color: red;
+        }
+
+    - bir sınıfı etkilesin;
+
+        .container{
+            Background-color: red;
+        }
+
+    -belli bir id yi etkilesin;
+
+        #header{
+            font-size: 24px;
+        }
+
+    -belirli bir grup seçici;
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+Özelleştirmeler;
+
+color → Metin rengi ayarı
+
+        color: red; /* Renk adı */
+        color: #333; /* Hex kodu */
+        color: rgb(255, 0, 0); /* RGB değeri */
+
+background-color → Arkaplan rengi ayarı
+
+        background-color: yellow;
+
+font-size → Yazı boyutu ayarı
+
+        font-size: 16px; /* Piksel */
+        font-size: 1.2em; /* Göreceli birim */
+
+font-family → Yazı tipi seçimi
+
+        font-family: Arial, sans-serif;
+
+font-weight → Yazı kalınlığı
+        font-weight: bold; /* Kalın yazı */
+        font-weight: 400; /* Sayısal değer */
+
+text-align → Metin hizalama
+        text-align: center; /* Ortala */
+        text-align: right; /* Sağa hizala */
+
+line-height → Satır yüksekliği
+        line-height: 1.5; /* Satır aralığı */
+
+letter-spacing → Harf aralığı
+        letter-spacing: 2px; 
+
+text-decoration → Metin dekorasyonu
+        text-decoration: underline; /* Alt çizgi */
+        text-decoration: none; /* Dekorasyonu kaldır */
+
+border → Çerçeve ayarı
+        border: 2px solid black; /* Kalınlık, çizgi tipi, renk */
+
+border-radius → Köşe yuvarlama
+        border-radius: 10px; 
+
+margin → Dış boşluk ayarı
+        margin: 10px; /* Her yöne */
+        margin: 10px 20px; /* Üst/Alt 10px, Sağ/Sol 20px */
+
+padding → İç boşluk ayarı
+        padding: 10px;
+
+width / height → Genişlik ve yükseklik
+        width: 100px;
+        height: 200px;
+
+display → Görünüm türü
+        display: block; /* Blok eleman */
+        display: inline; /* Satır içi */
+        display: none; /* Görünmez yap */
+
+position → Konumlandırma türü
+        position: relative; /* Göreceli */
+        position: absolute; /* Kesin konum */
+        position: fixed; /* Sabit */
+        position: sticky; /* Yapışkan */
+
+top / left / right / bottom → Konum ayarları
+        top: 20px; /* Yukarıdan 20px */
+        left: 10px; /* Soldan 10px */
+
+z-index → Katman sıralaması
+        z-index: 10; /* Yüksek değer üste çıkarır */
+
+overflow → Taşan içerik kontrolü
+        overflow: hidden; /* Taşan kısmı gizle */
+        overflow: scroll; /* Kaydırma çubuğu ekle */
+
+cursor → Fare imleci türü
+        cursor: pointer; /* El imleci */
+        cursor: default; /* Normal ok imleci */
+
+opacity → Saydamlık ayarı
+        opacity: 0.5; /* Yarı saydam */
+
+box-shadow → Kutu gölgesi ekleme
+        box-shadow: 2px 2px 5px #888888; /* X, Y, Blur, Renk */
+
+text-shadow → Metin gölgesi
+        text-shadow: 2px 2px 5px gray;
+
+transition → Geçiş animasyonu
+        transition: all 0.3s ease; /* Animasyon süresi ve türü */
+
+transform → Dönüşüm uygulama
+        transform: scale(1.2); /* Boyutlandırma */
+        transform: rotate(45deg); /* Döndürme */
+
+flex → Esnek kutu ayarı (Flexbox)
+        display: flex;
+        justify-content: center; /* Ortala */
+        align-items: center; /* Dikey ortala */
+
+grid → Grid düzeni (Grid Container)
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+gap → Boşluk ayarı (Grid/Flex)
+        gap: 10px;
+
+visibility → Görünürlük kontrolü
+        visibility: hidden; /* Gizler ama alanı korur */
+
+content → Pseudo-element içerik ekleme
+        ::before {
+            content: '→ ';
+        }
+
+background-image → Arkaplan görseli ekler.
+        background-image: url('image.jpg');
+
+background-size → Arkaplan görselini boyutlandırır.
+        background-size: cover; /* Tüm alanı kapla */
+        background-size: contain; /* Görseli sığdır */
+
+background-repeat → Görselin tekrar edip etmeyeceğini kontrol eder.
+        background-repeat: no-repeat;
+
+background-position → Görselin konumunu belirler.
+        background-position: center center;
+
+opacity → Görselin veya elemanın saydamlık seviyesini ayarlar.
+
+text-transform → Metni büyük/küçük harf yapar.
+        text-transform: uppercase; /* Tamamen büyük */
+        text-transform: lowercase; /* Küçük */
+        text-transform: capitalize; /* Kelimelerin baş harfi büyük */
+
+white-space → Metnin satır sonu davranışını kontrol eder.
+        white-space: nowrap; /* Satır atlamaz */
+
+word-wrap / overflow-wrap → Uzun kelimelerin taşmasını engeller.
+        word-wrap: break-word;
+
+text-overflow → Taşan metne efekt ekler.
+        text-overflow: ellipsis; /* ... ile göster */
+
+margin ve padding → İç ve dış boşluk ayarları.
+
+box-sizing → Kutunun genişlik hesaplama yöntemi.
+        box-sizing: border-box; /* Border ve padding'i genişliğe dahil eder */
+
+min-width / max-width → Genişlik sınırlarını belirler.
+        max-width: 100%; /* Taşmayı önler */
+
+min-height / max-height → Yükseklik sınırlarını belirler.
+
+border → Kenar çizgisi ekler.
+
+border-style → Çizgi türünü ayarlar.
+        border-style: solid; /* Düz çizgi */
+        border-style: dashed; /* Kesik çizgi */
+        border-style: dotted; /* Noktalı çizgi */
+
+border-width → Kenar çizgisi kalınlığı.
+
+border-color → Kenar çizgi rengi.
+
+border-radius → Köşeleri yuvarlatır.
+
+box-shadow → Kutulara gölge ekler.
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+
+position → Elemanın yerleşimini belirler.
+
+static (varsayılan), relative, absolute, fixed, sticky
+top / right / bottom / left → Konum değerleri.
+
+z-index → Elemanların sıralamasını belirler.
+
+float → Elemanları sola/sağa hizalar.
+        float: left;
+
+clear → Float etkisini kaldırır.
+        clear: both;
+
+visibility → Elemanın görünürlük durumu.
+        display: flex → Flexbox aktif eder.
+
+justify-content → Yatay hizalama.
+        justify-content: space-between;
+
+align-items → Dikey hizalama.
+        align-items: stretch; /* Yükseklik genişler */
+
+flex-wrap → Elemanların birden fazla satıra sarmalanmasını sağlar.
+
+flex-direction → Ana ekseni belirler.
+        flex-direction: column; /* Dikey hizalama */
+
+display: grid → Grid düzenini aktif eder.
+
+grid-template-columns → Sütunları tanımlar.
+        grid-template-columns: 1fr 1fr 1fr; /* 3 eşit sütun */
+
+grid-template-rows → Satırları tanımlar.
+
+grid-gap → Boşluk ekler.
+
+grid-column / grid-row → Elemanın grid alanını belirler.
+
+transition → Geçiş efektleri oluşturur.
+
+@keyframes → Özel animasyonlar oluşturur.
+        @keyframes slideIn {
+        from {
+                transform: translateX(-100%);
+        }
+        to {
+                transform: translateX(0);
+        }
+        }
+
+
+        .animate {
+        animation: slideIn 1s ease-in-out;
+        }
+
+list-style → Liste işaretlerini ayarlar.
+        list-style: none; /* İşaretleri kaldırır */
+        list-style: square; /* Kare işaret */
+
+filter → Görsellere efekt ekler.
+        filter: grayscale(100%); /* Siyah beyaz */
+        filter: blur(5px); /* Bulanıklık */

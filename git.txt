@@ -1,0 +1,54 @@
+ilk ayarlar;
+
+    git config --global user.name "Ad Soyad"
+
+    git config --global user.email "email"//gitemaili
+
+    git config --list //configleri gösterir
+
+
+
+    git init //proje klasörüne git i yükler
+
+    git clone <repo-id> // repoyu pc ne klonlar
+
+    git status // commit add veya push statusünü gösterir
+
+    git add <file> // dosyadaki belirlenenleri git e pushlamak için hazır da tutar
+
+
+
+    git add . // klasördeki herşeyi pushlamak için hazırda tutar
+
+    git commit -m "commit" // commit ler -m den sonra commitin yorumunu yada adını yazarız
+
+    git commit -am "tekrar commit atacağımız zaman belirtiriz neden yaptığımızı"
+
+    git log //logları gösterir
+
+    git log -oneline //kısa log
+
+    git diff // git ile farkını gösterir
+
+    git diff --staged // son commiten farkını gösterir
+
+    git branch <branch_Name> //yeni branch oluşturur
+
+    git branch //branchleri listeler
+
+    git checkout <branch-name> //branchler arası geçiş yapar
+
+    git branch -b <name> // yeni branch açar ve direk o branch e geçer
+
+    git merge <name> //mevcut branchi belirtilen branch ile birleştirir
+
+    git remote add origin <repo url> //buluttaki repoya gönderir
+
+    git remote -v //buluttaki repoları gösterir
+
+    git push origin <branch-name> //branchleri gönderir
+
+    git pull origin <branch name> //branchleri çeker
+
+
+    

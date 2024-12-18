@@ -1,0 +1,41 @@
+javascript bir web geliştirme dilidir. script language olarak geçer, cross çalışır. javasciprt html tabanlı bir web sitesine animasyonlar, onclick eventleri, interactiveness ve taraıcı üstünde yani client ekranında db erişmeden direk ekranda aktif olarak çalışabilen bir dildir. interpreted - yorumlanan bir dildir.
+
+Obfuscation in Action --> js kodları tarayıca hashlenir bu hashleri decrpty edebiliriz.
+
+
+js temelleri;
+    - 3 ana değişkenle çalışır, var-let-const, 
+        var- funcition bazlı çalışır
+        let-const -block bazlı çalışır
+    
+    data tipleri; string-number-boolean-null-undefined-object
+
+    function; fonksiyonlar python gibi belirteçle tanımlanır;
+        <script>
+            function PrintResult(rollNum) {
+                alert("Username with roll number " + rollNum + " has passed the exam");
+                // any other logic to display the result
+            }
+
+            for (let i = 0; i < 100; i++) {
+                PrintResult(rollNumbers[i]);
+            }
+        </script>
+
+    loops; klasik for - while - foreach - do while  loopları vardır.
+            c# gibi tanımlanır
+
+-- java scripti html e entegre etmenin 2 yolu vardır "internally - externally"
+
+    internally-internal --> <script>  </script> arasına yazdığımız js kodlarıdır
+    externally-external --> <script src="script.js"></script> bu şekilde başka bir dosyayı nitelendirdiğimizdir.
+
+-- input aldığımız yada dialoge içeren 3 tip vardır
+    -alert
+        alert("HelloTHM");
+    -prompt
+        prompt("What is your name?");
+    -Confirm
+        confirm("Are you sure?");
+
+-- flow statement - if-else-switch case

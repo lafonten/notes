@@ -1,0 +1,25 @@
+Application: w3wp.exe
+Framework Version: v4.0.30319
+Description: The process was terminated due to an internal error in the .NET Runtime at IP 00007FFC3105C01C (00007FFC30F80000) with exit code 80131506.
+Evet ýd=1023
+
+
+
+
+Faulting application name: w3wp.exe, version: 10.0.14393.0, time stamp: 0x57899b8a
+Faulting module name: clr.dll, version: 4.7.4051.0, time stamp: 0x648f6ff0
+Exception code: 0xc0000005
+Fault offset: 0x00000000000dc01c
+Faulting process id: 0x954c
+Faulting application start time: 0x01da704ceb6bb3e0
+Faulting application path: c:\windows\system32\inetsrv\w3wp.exe
+Faulting module path: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clr.dll
+Report Id: ebd7b258-8bf7-41d9-9e60-f2519382df30
+Faulting package full name: 
+Faulting package-relative application ID: 
+
+EventID: 1000
+
+
+5011
+A process serving application pool 'DefaultAppPool' suffered a fatal communication error with the Windows Process Activation Service. The process id was '38220'. The data field contains the error number.

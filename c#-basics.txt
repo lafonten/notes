@@ -1,0 +1,716 @@
+sbyte --> -128 to 127
+short --> -32768 to 32767
+short --> -2147483648 to 2147483647
+long --> -9223372036854775808 to 9223372036854775807
+byte --> 0 to 255
+ushort --> 0 to 65535
+uint -->  0 to 4294967295
+ulong --> 0 to 18446744073709551615
+float --> 6-9 digits
+double --> 15-17 digits
+decimal --> 28-29 digits
+char --> karakter
+string --> karakter listesi- metin değişkeni
+bool --> true false
+int --> integerlar
+var --> tip belirtmeksizin kendisini anlatıp tipi bulur -- varuable
+\n --> text içinde satır atlatır.
+\t --> tab boşluğu bırakır
+\..\ --> arasına yazılanın özel karakterilerini çıktıda verir böylece hata almayız
+\\ --> url belirtmek için kullanılır
+@ --> içerideki özel karakterleri normal karakter olarak algılar ve işleme sokmaz direk bastırır
+\u --> özel karakterler kullanılır.
+$"{test1} {test2}"; --> test1 ve test2 değişkenlerini içeri yazdırır
+System.TimeSpan - System.DateTime
+TryParse --> istenilen türe göre parse eder ve verilen değişkene atar
+        örnek: decimal.TryParse(value,out result)
+Array.Reverse(listname) --> listeyi tersten sıralar
+Array.Sort(listname) --> listeyi küçükten büyüye sıralar
+Array.Clear(listname,0,2) --> 0 dan ikiye kadar olan indexleri siler
+Array.Resize(ref listname, new_list_count) --> listenin büyüklüğünü tekrar düzenler
+String.Join(",",stringname) --> verilen stringin charları arasına 
+ koyar
+string.Split(','); --> virgülle ayrılmış olan veriyi virgüllerini her birini liste olarak bakar ve hepsini indexler.
+ToCharArray() --> stringi charlarına ayırır ve listeye dönüştürür.
+PadLeft(),PadRight() --> sağdan yada soldan boşluk bırakır
+Trim(), TrimStart(), TrimsEnd() --> belirli bir şeye göre trimler
+GetHashCode() --> hash kodunu verir
+Length --> uzunluğunu verir.
+Contains() --> içeriyor mu diye bakar
+StartsWith() --> verilen değerlemi başlıyor diye bakar
+EndsWith() --> verilen değerle bitiyor mu bakar
+Substring() -->
+Replace() --> değiştirir
+Insert() --> yerine koyar
+Remove() --> siler
+
+bileşik yazdırma -->
+        string first = "Hello";
+        string second = "World";
+        Console.WriteLine("{0} {1}!",first,second); --> Hello World!
+        Console.WriteLine("{0} {0} {0}",first,second); --> Hello Hello Hello
+
+        int price = 100
+        $"Price: {price:C}"; --> $100 --> eğer pc nin para birimi dolarsa dolar gösterir :C bu işe yarar
+        $"Price: {price:N}"; --> 100.00 --> birime çevirir daha yüksek değer olsaydı basamakları virgülle ayırırdı
+        $"Price: {price:P2}"; --> 100% --> yüzde verir
+
+        N-C-P komutlarının yanına C2-P3-N4 gibi değerler koyarak virgülden sonra kaç basamak alacağını belirtir.
+
+
+
+if
+else if
+else
+foreach(int i in items){
+}
+for(int i; i<10;i++){}
+
+<evaluate this condition> ? <if condition is true, return this value> : <if condition is false,return this value>
+
+10>5 ? yes:no  -> eğer 10 5 den büyükse yes cevap değilse no cevap
+
+switch (){
+
+    case :
+        break;
+
+    default:
+    break;
+}
+
+do{
+
+}while (true);
+
+try{
+    //try code block 
+}catch{
+    //catch code block 
+}finally{
+    finally code block
+}
+
+
+[12:54, 12.12.2024] Umut Akdogan: try
+{
+    // Step 1: code execution begins
+    try
+    {
+        // Step 2: an exception occurs here
+    }
+    finally
+    {
+        // Step 4: the system executes the finally code block associated with the try statement where the exception occurred
+    }
+
+}
+catch // Step 3: the system finds a catch clause that can handle the exception
+{   
+   // Step 5: the system transfers control to the first line of the catch code block
+}
+
+Yürütme, dış try deyiminin kod bloğunda başlar.
+İç try deyiminin kod bloğunda bir özel durum oluşturulur.
+Çalışma zamanı dış try deyimiyle ilişkili yan tümceyi bulurcatch.
+Çalışma zamanı denetimi kod bloğunun ilk satırına catch aktarmadan önce iç try deyimiyle ilişkili yan tümcesini yürütürfinally.
+Çalışma zamanı daha sonra denetimi kod bloğunun ilk satırına catch aktarır ve özel durumu işleyen kodu yürütür.
+Bu basit örnekte iç içe ve try-catchtry-finally desenler tek bir yöntem içinde yer alır, ancak diğer yöntemleri çağıran yöntemler arasında birden çok try-catch ve try-finally desen yayılabilir.
+
+Özel durum işleme gerektirebilecek yaygın senaryolar kullanıcı girişi, veri işleme, dosya G/Ç işlemleri, veritabanı işlemleri ve ağ iletişimidir.
+C# dilinde özel durum işleme, , catchve finally anahtar sözcükleri kullanılarak tryuygulanır. Her anahtar sözcüğün belirli bir amaca hizmet eden ilişkili bir kod bloğu vardır.
+Özel durumlar türler olarak temsil edilir ve .NET'teki sınıfından System.Exception türetilir. Özel durumlar, özel durum türünü tanımlayan bilgiler ve ek ayrıntılar sağlayan özellikler içerir.
+Bir özel durum oluştuğunda, .NET çalışma zamanı bunu işleyebilen en catch yakın yan tümceyi arar. Arama, özel durumun oluşturulduğu yöntemle başlar ve gerekirse çağrı yığınını aşağı taşır.
+
+
+try, catch, finally ve throw.
+
+Açıklama:
+C# özel durum işleme mekanizmasında kullanılan anahtar sözcükler şunlardır:
+
+try: Özel duruma neden olabilecek kodları çalıştırır.
+catch: Özel durum meydana geldiğinde bu durumu işler.
+finally: Özel durum meydana gelsin ya da gelmesin, temizleme işlemleri gibi kodları çalıştırır.
+throw: Özel durum oluşturmak veya mevcut bir özel durumu yeniden fırlatmak için kullanılır.
+
+##########################
+
+fonksiyonların parametre alması;
+        void test(int number){
+            int topla = numer *2 ;
+            print(int);
+        }
+defualt parametre --> int number =20 dersek eğer int değeri verilmezse 20 yi kullanılarak
+ref keyword --> ref keyword ile gönderdiğimiz değer tipi fonskyion içerisinde tanımlı olanı alır
+
+        int number1= 20;
+        int number2=30
+        topla(ref number1,number2)
+        void topla(ref number1,number2){
+            number1=30;
+            print(number1+number2);
+        }
+
+        burada artık number 1 20 değil fonksiyonu referans alır ve değer number1 30 kabul edilir ref keywordu ile
+
+out keyword --> ref ile aynıdır sadece ref de number1 i set etmemiz lazım ama outda number1 e değer vermemize gerek yok.
+
+challenge keyword --> params keywordu ile liste değişkeni veriyoruz ve istediğimiz kadar değer gönderebiliyoruz
+
+        void test(params int[] numbers){
+
+        }
+ 
+method overloading --> farklı parametreler ile aynı methodu tekrar aynı isimle yazabiliriz
+
+################################33
+
+Classlar --> method ve yönetim kısmıdır farklı classlar ile prohe okunurluğu arttırılır
+            property; özellikleri tutmaya yarar, class içerisinde farklı özellikleri depolayıp daha sonra kullanmamıza olanak sağlar. genellikle veri tabanlarında kullanılır.
+            encapsulation; get set propertyde düzenlenir ve çağrıldığında veya kaydedildiğinde farklı işlemler yapmaya olanak tanır.
+
+
+inheritance --> bir classı başka bir classdan miras alıp onun proplarını methodlarını kullanmaktır. birden fazla klası inheritance olarak kullanamayız. yani 1 tane inherit edebiliriz ama aynı inheriti birden fazla kullanabiliriz.
+
+interface --> benzer mantıkllıdır ama interfaceler tek başına kullanılmaz implemente edilmelidir ve birden fazla implemente aynı clasa yapılabilir.
+
+virtual method --> miras aldığımız classdaki bir methodu fonksiyonu farklı şekilde kullanmak istiyorsak virtual ve override ı kullanarak o fonksiyonu bastırıp yeni halini kullanabiliriz.
+
+abstract --> virtual gibidir ama burda özel bir durumvar bu class içerisinde kesinlikle her implemente edildiğinde değiştirilmesi gereken tekrar tanımlanması gereken bir fonksiyon vardır. abstract sınıfı miras aldığımızda en başka bu değişmesi gereken fonksiyonu tanımlayıp değişikliklerini uygulamamız gerekir.
+
+
+Erişim bildirgeçleri - Access modifier -->
+
+            public: Her yerden erişilebilir.
+            private: Sadece tanımlandığı sınıf içinde erişilebilir.
+            protected: Sadece tanımlandığı sınıfta ve o sınıfı miras alan sınıflarda erişilebilir.
+            internal: Aynı proje (assembly) içinde her yerden erişilebilir.
+            protected internal: Aynı proje içinde veya miras alan sınıflarda erişilebilir.
+            private protected: Sadece tanımlandığı sınıfta ve aynı projede o sınıfı miras alan sınıflarda erişilebilir.
+
+""
+Consturcter --> C#'da constructor (yapıcı) bir sınıfın nesnesi oluşturulurken çağrılan, genellikle o sınıfın başlangıç değerlerini ayarlamak veya gerekli işlemleri yapmak için kullanılan özel bir metottur. Bir class newlendiğinde çağrılkdığında çalışacak olan methodlardır.
+
+C#'ta **değer tipleri** (int, double, bool gibi) doğrudan bir değeri tutar ve bellekte stack üzerinde saklanır. **Referans tipleri** (class, array gibi) ise bir nesnenin bellekteki adresini tutar ve heap üzerinde saklanır.
+
+
+
+C#'ta dizi türleri şunlardır:
+
+    Tek Boyutlu Diziler:
+         Bir boyutlu, doğrusal veri yapılarıdır (örn. int[] arr = {1, 2, 3};).
+
+    Çok Boyutlu Diziler: 
+        İki veya daha fazla boyutlu, tablo benzeri veri yapılarıdır (örn. int[,] matrix = {{1, 2}, {3, 4}};).
+
+    Jagged (Girintili) Diziler: 
+        Elemanları farklı uzunluklara sahip dizilerden oluşan, "dizi içinde dizi" yapısıdır (örn. int[][] jagged = new int[2][];).
+
+    Sabit Boyutlu Diziler: 
+        Boyutları oluşturulduktan sonra değiştirilemeyen dizilerdir.
+
+C#'taki koleksiyon türleri ve açıklamaları:
+
+    List<T>: 
+        Dinamik boyutlu, tür güvenli bir listedir, elemanlara indeksle erişilir.
+
+    Dictionary<TKey, TValue>: 
+        Anahtar-değer çiftlerini tutar, hızlı erişim sağlar.
+
+    Queue<T>: 
+        İlk giren ilk çıkar (FIFO) mantığında çalışan bir koleksiyondur.
+
+    Stack<T>: 
+        Son giren ilk çıkar (LIFO) mantığında çalışan bir koleksiyondur.
+
+    HashSet<T>: 
+        Tekil (benzersiz) elemanlardan oluşur, hızlı arama ve ekleme sunar.
+
+    LinkedList<T>: 
+        Çift yönlü bağlantılı liste yapısında elemanları tutar, sıralı erişim sağlar.
+
+    ObservableCollection<T>: 
+        Koleksiyonda değişiklik olduğunda bildirim gönderen bir listedir (örneğin UI güncellemeleri için).
+
+    ArrayList: 
+        Türden bağımsız, dinamik boyutlu bir koleksiyon; ancak List<T> tercih edilir çünkü tür güvenliği sunmaz.
+
+    SortedList: 
+        Anahtar-değer çiftlerini tutar ve ekleme sırasında anahtarlarına göre sıralar.
+
+    BitArray: 
+        Boolean değerleri 0 ve 1 şeklinde verimli bir şekilde saklar.
+
+    Queue (non-generic): 
+        FIFO mantığında çalışan, türden bağımsız bir koleksiyon.
+
+    Stack (non-generic): 
+        LIFO mantığında çalışan, türden bağımsız bir koleksiyon.
+
+
+#################################################################
+
+private static void HandleException(Action action){
+    try{
+        action.Invoke();
+    }catch(Exception exception){
+        Console.Writeline(exception);
+    }
+
+}
+
+#################################################################
+
+Generic sınıflar; 
+
+interface IRepository<T>
+{
+    List<T> GetAll();
+    T Get(int id);
+    void Add(T entity);
+    void Delete(T entity);
+    void Update(T entity);
+}
+
+interface ICustomerDal:IRepository<Customer>
+{
+
+}
+
+interface IProductDal:IRepository<Product>
+{
+
+}
+
+###################################################################
+
+Attribute's -->  özellik eklenen ayrı yapılardır. 
+
+    bir property'in üstüne [] ile yazılan keylerdir;
+
+            [RequiredProperty]
+            public string Name {get; set;}
+
+    
+    bir class a üstüne [key("value")] olarak yazılır;
+
+        [ToTable("Customers")]
+        class Customer
+        {
+
+        }
+
+    attribute tanımlama;
+
+        değişkensiz;
+
+            class RequiredPropertyAttribute:Attribute
+            {
+
+            }
+
+
+        değişkenli;
+
+            class ToTableAttribute:Attribute
+            {
+                string _tableName;
+                
+                public ToTableAttribute(string tableName)
+                {
+                    _tableName = tableName;2
+                }
+            }
+
+    [AttributeUsage(AttributeTargets.Property)] --> yeni tanımlanan attributelarda kullanılır, attribute classının üstüne yazılır ve hangi türlerin kullanacağı filtrelenir property derstek sadece proplar çalışır class derstek classlar kullanır sadece aynı zamanda "|" pipe ile daha fazla attribute eklenebilir 
+
+    [AttributeUsage(AllowMultiple=true)] --> bu attribute ı birden fazla kez kullanabilir mi ?
+
+
+    hazır attributelar;
+        [Obsolete("Don't use add, instead use Addnew Method")] --> kullanıcıya uyarı verir bu uyarı önceden kullanılan methodun yerine yenisi yazıldığında kullanılır. Eski method u kullanan kişiye uyarıverir, içeriğe yazdığımı uyarıyı verir.
+
+############################################################################
+Attribute Detaylı;
+___________________
+    1. [Key]
+       Amaç: Bir özelliği birincil anahtar olarak işaretler.
+       Kullanım: Bir sınıfta birden fazla [Key] kullanmak genellikle composite primary key için Fluent API gerektirir.
+
+    public class Product
+    {
+        [Key]
+        public int ProductId {get; set;}
+        public string Name {get; set;}
+    }
+----------------------------------------------------------------------
+
+    2. [Required]
+        Amaç: Bir özelliğin null olamayacağını belirtir.
+        Veritabanı Etkisi: Kolon NOT NULL olarak oluşturulur.
+
+    public class Product
+    {
+        public int ProductId { get; set; }
+        
+        [Required]
+        public string Name { get; set; }
+    }
+-----------------------------------------------------------------------
+
+    3.  [MaxLength] ve [StringLength]
+        Amaç: Bir string veya dizi özelliğin maksimum uzunluğunu belirtir.
+        Fark: [StringLength] aynı zamanda minimum uzunluğu da belirleyebilir ve genellikle veri doğrulama için kullanılır.
+
+    public class Product
+    {
+        public int ProductId { get; set; }
+        
+        [MaxLength(100)]
+        public string Name { get; set; }
+        
+        [StringLength(200, MinimumLength = 10)]
+        public string Description { get; set; }
+    }
+------------------------------------------------------------------------
+
+    4.  [ForeignKey]
+        Amaç: Bir özelliği yabancı anahtar olarak işaretler.
+        Kullanım: Navigation property ile ilişkilendirildiğinde, yabancı anahtar özelliğini belirtmek için kullanılır.
+
+    public class Product
+    {
+        public int ProductId { get; set; }
+        
+        public string Name { get; set; }
+        
+        public int CategoryId { get; set; }
+        
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
+    }
+--------------------------------------------------------------------------
+
+    5.  [NotMapped]
+        Amaç: Bir özelliğin veritabanına haritalanmasını engeller.
+        Kullanım: Sadece uygulama içinde kullanılacak hesaplanan özellikler için idealdir.
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            
+            public string Name { get; set; }
+            
+            [NotMapped]
+            public string DisplayName => $"{ProductId} - {Name}";
+        }
+---------------------------------------------------------------------------
+
+    6.  [Timestamp]
+        Amaç: Concurrency (eşzamanlılık) kontrolü için kullanılır.
+        Veritabanı Etkisi: Genellikle rowversion tipi bir kolon olarak oluşturulur.
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            
+            public string Name { get; set; }
+            
+            [Timestamp]
+            public byte[] RowVersion { get; set; }
+        }
+----------------------------------------------------------------------------
+
+    7.  [ConcurrencyCheck]
+        Amaç: Bir özelliğin eşzamanlılık kontrolü için kullanılacağını belirtir.
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            
+            public string Name { get; set; }
+            
+            [ConcurrencyCheck]
+            public int Stock { get; set; }
+        }
+-----------------------------------------------------------------------------
+
+    8.  [DatabaseGenerated]
+        Amaç: Bir özelliğin veritabanı tarafından otomatik olarak oluşturulup oluşturulmayacağını belirtir.
+        Parametreler:
+        DatabaseGeneratedOption.None: Veritabanı tarafından üretilmez.
+        DatabaseGeneratedOption.Identity: Kimlik sütunu olarak işaretler (otomatik artan).
+        DatabaseGeneratedOption.Computed: Hesaplanan sütun olarak işaretler.
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            
+            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+            public int SerialNumber { get; set; }
+            
+            [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+            public DateTime CreatedDate { get; set; }
+        }
+-----------------------------------------------------------------------------
+
+    9.  [Column]
+        Amaç: Bir özelliğin veritabanındaki kolon adını, veri tipini veya diğer özelliklerini belirtir.
+        Parametreler:
+        Name: Kolon adı.
+        TypeName: Veritabanındaki veri tipi.
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            
+            [Column("ProductName", TypeName = "nvarchar(200)")]
+            public string Name { get; set; }
+        }
+------------------------------------------------------------------------------
+
+    10. [Index] Alternatifi (EF Core)
+        Kullanım: Fluent API ile indeks oluşturulur çünkü EF Core [Index] data annotation'ını desteklemez.
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => p.Name)
+                .IsUnique();
+        }
+------------------------------------------------------------------------------
+
+    11. [Required] ile [MinLength] ve [MaxLength] Birlikte Kullanımı
+         Amaç: Daha detaylı doğrulama kuralları oluşturmak için kullanılır.
+
+        public class Customer
+        {
+            public int CustomerId { get; set; }
+            
+            [Required]
+            [StringLength(50, MinimumLength = 5)]
+            public string Username { get; set; }
+        }
+------------------------------------------------------------------------------
+
+    12. [DefaultValue]
+        Amaç: Bir özelliğin varsayılan değerini belirtir.
+        Not: EF Core, [DefaultValue] data annotation'ını doğrudan desteklemez. Bunun yerine Fluent API kullanılır.
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            
+            [DefaultValue(0)]
+            public int Stock { get; set; }
+        }
+
+        // Fluent API ile
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Stock)
+                .HasDefaultValue(0);
+        }
+
+################################################################################
+
+Delegeler nedir?
+
+    *Delegeler bir veya birden fazla metodu temsil edebilen türlerdir.
+    *Fonksiyon işaretçilerine benzer ancak C#'ta daha güvenlidir.
+    *Metotlar parametre olarak geçirme ve çağırma mekanızması sunar.
+
+    1. Delegate tanımlama;
+    ______________________
+
+        public delegate void MyDelegate(string message);
+
+    2. Delegate ile metot tanımlama ve çağırma;
+    ___________________________________________
+
+        public static void ShowMessage(string message)
+        {
+            Console.WriteLine(message)
+        }
+
+        public static void Main(){
+            MyDelegate del = ShowMessage;
+
+            del("Merhaba dünya!");
+        }
+
+    3. Delegate Anonim Metotlar ile Kullanımı;
+    __________________________________________
+
+        MyDelegate del = delegate(string message){
+            Console.WriteLine("Anonim metot: "+ message);
+        };
+
+        del("Merhaba!");
+
+    4. Lambda ile delegate kullanma;
+    ________________________________
+
+        MyDelegate del = (message) => Console.WriteLine("Lambda: "+ message);
+        del("Merhaba!");
+    
+Generic Delegeleri;
+___________________
+
+    1. Action Delegesi;
+    ___________________
+        *Geri dönüş değeri olmayan metodları temsil eder.
+
+        Action<string> print = message => Console.WriteLine(message);
+        print("Action ile mesaj");
+
+    
+    2. Func delegesi;
+    _________________
+        *Geri dönüş değeri olan metotları temsil eder.
+
+        Func<int, int, int> add = (a,b) => a+b;
+        Console.WriteLine(add(3, 5));
+
+    3. Predicate Delegesi;
+    ______________________
+        *Boolean dönen metotlar için kullanılır.
+
+        Predicate<int> isPositive = num => num >0;
+        Console.WriteLine(isPositive(10));
+
+############################################################################
+
+Action Delegeleri;
+___________________
+    Action nedir?;
+        *Action, C#'ta geri dönüş değeri olmayan (void) metotları temsil eden bir generic delegate türüdür.
+        *Parametre alabilir, ancak her zaman void döner.
+        *Kullanımı, özel bir delegate tanımlamaya gerek bırakmaz.
+
+    Temel;
+    Action --> hiç parametre almayan metotlar için
+    Action<T> --> bir parametre alan metotlar için
+    Action<T1,T2> --> iki parametre alan metotlar için
+    Action<T1,T2,...TN> --> n kadar parametre alan metotlar için
+
+    Örnekler;
+    
+    1. Tek parametre alan action;
+        
+        Action greet = () => Console.WriteLine("Merhaba!");
+        greet();
+
+    2. Tek parametre alan action;
+        
+        Action<string> printMessage = message => Console.WriteLine(message);
+        printMessage("Bu bir action örneğidir.");
+
+    3. Birden fazla parametre alan action;
+
+        Action<int, int> add = (a,b) => Console.WriteLine($"Toplam: {a+b}");
+        add(5,10);
+
+    4. Dizi veya Liste üzerinde döngü ile kullanım;
+
+        List<int> numbers = new List<int> {1,2,3,4,5};
+        Action<int> printNumber = number => Console.WriteLine(number);
+
+        numbers.ForEach(printNumber);
+
+    5. Multicast işlemleri;
+
+        Action log = () => Console.WriteLine("Log: İşlem başladı.");
+        log += () => Console.WriteLine("Log: İşlem devam ediyor.");
+        log += () => Console.WriteLine("Log: İşlem tamamlandı.");
+
+
+Action kullanımları;
+
+    1. Event Handling;
+        *Action olay-event- işlemede yaygın olarak kullanılır.
+
+        public event Action OnPressComplete;
+
+        public void Process(){
+            Console.WriteLine("İşlem başladı.");
+
+            OnPressComplete?.Invoke();
+        }
+
+        public static void Main(){
+            var obj = new Program();
+            obj.OnPressComplete += () => Console.WriteLine("İşlem tamamlandı!");
+            obj.Process.();
+        }
+
+    2. Lambda ile basit görevler
+        *Action, kısa ve anonim görevlerde kullanılabilir.
+
+        Action<string> errorLogger = error => Console.WriteLine($"Hata: {error}");
+        errorLogger("Dosya bulunamadı.");
+
+    3. Koleksiyon işlemleri;
+        
+        List<string> items = new List<string> {"Elma","Armut","Çilek"};
+        Action<string> printItems = item => Console.WriteLine(item);
+        
+        items.ForEach(printItem);
+
+###############################################################################
+
+C# Func delegeleri
+___________________
+    Nedir?;
+        *Func, geri dönüş değeri olan metotları temsil eden generic delegate türüdür.
+        *0 ile 16 arasında parametre alabilir ve her zaman bir geri dönüş değeri döner.
+        *Kullanımı, özel bir delegate tanımlama ihtiyacını ortadan kaldırır.
+
+    Temel;
+        Func<TResult> --> hiç parametre almaz bir sonuç döner.
+        Func<T, TResult> --> bir parametre alır ve 1 sonuç döner
+        Func<T1, T2, TResult> --> iki parametre alır ve bir sonuç döner.
+        Func<T1,T2,..,T16 , TResult> --> en fazla 16 parametreye kadar destekler ve sonuç döner
+
+    Örnekler;
+
+        1. Hiç parametre almayan func;
+
+            Func<string> getMessage = () => "Merhaba, Dünya!";
+            Console.WriteLine(getMessage());
+
+        2. Tek parametre alan func;
+
+            Func<int, string> convertToString = number => $"Sayı: {number}";
+            Console.WriteLine(convertToString(100));
+
+        3. Birden fazla parametre alan func;
+
+            Func<int, int, int> multiply = (a,b) => a*b;
+            Console.WriteLine(multiply(3,4));
+
+        4. Lambda ile kullanımı;
+
+            Func<double, double, double> calculateArea = (width,height) => width*height;
+            Console.WriteLine(calculateArea(5.5, 3.2));
+
+        5. Func delegesini LINQ işlemlerinde;
+
+            List<int> numbers = new List<int> {1, 2, 3, 4, 5, 6};
+            Func<int, bool> isEven = number => number %2 == 0;
+
+            var evenNumbers = numbers.Where(isEven);
+            Console.WriteLine(string.Join(", "),evenNumbers));
+
+        6. Multicast Func;
+
+            Func<int, int> square = x => x*x;
+            square+= x => x+10;
+            
+            Console.WriteLine(square(5));
+            
+
+
+
+

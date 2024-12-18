@@ -1,0 +1,308 @@
+Temel kavramlar;
+    DbContext --> veritabanı ile uygulama arasındaki tüm etkileşimi yönetir. DbSet'leri tanımlanır konfigürasyonları içerir.
+
+    DbSet<TEntity> --> veri tabanındaki bir tabloya karşılık gelen sorgulabilir varlık kümesidir.
+
+    Migrations --> kod tabanlı veritabanı şema değişikliklerinin kontrolü ve takibini sağlar.
+
+    ModelBuilding (OnModelCreating) --> Fluent api ile şema ve ilişkileri yapılandırma alanı.
+    
+    Conventions --> EF core varsayılan adlandırma ve eşleştirme kurallarını ifdae eder.
+
+
+Kurulumlar;
+    NuGet Paketleri ;
+    ________________
+
+            dotnet add package Microsoft.EntityFrameworkCore
+            dotnet add package Microsoft.EntityFrameworkCore.Design
+            dotnet add package Microsoft.EntityFrameworkCore.Tools
+            dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+
+    DbContext örneği;
+    ________________
+
+            public class AppDbContext : DbContext
+            {
+                public DbSet<Product> Product {get; set;}
+                public DbSet<Category> Categories {get; set;}
+
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+                    optionsBuilder.UseSqlServer("Server=localhost;Database=MyDb;Trusted_Connection=True").EnableSensitiveDataLogging();
+                }
+
+                protected override void OnModelCreating(ModelBuilder modelBuilder){
+                    modelBuilder.Entity<Product>().HasKey(p=> p.Id);
+
+                    modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(100);
+
+                    modelBuilder.Entity<Product>().HasOne(p => p.Category).WithMany(c => c.Products).HasForeignKey(p => p.CategoryId).OnDelete(DeleteBehavior.Cascade);
+
+                    modelBuilder.Entity<Category>().HasAlternateKey(c => c.Code);
+                }
+            }
+
+
+Model-varlık- Örneği;
+_____________________
+        public class Product
+        {
+            public int Id {get; set;}
+
+            [Required, MaxLength(100)]
+            public string Name {get; set;}
+            public decimal Price {get; set;}
+
+
+            //ilişki
+            public int CategoryId {get; set;}
+            public Category Category {get; set;}
+        }
+
+        public class Category
+        {
+            public int Id {get; set;}
+            public string Code {get; set;}
+            public string Name {get; set;}
+
+            public ICollection<Product> Products {get; set;}
+        }
+
+Migrations -->
+
+    dotnet ef migrations add InitialCreate --> ilk migrati oluşturur
+    dotnet ef database update --> migrations ı database e yazabiliriz
+    dotnet ef databae update _MigrationName --> başka bir migrationı database e atmak için kullanılır veya eski bir migrationa geri dönmek için kullanılır
+    dotnet ef migrations remove --> migration silmek için
+
+    Specific Connection -->
+        dotnet ef database update --connection "Server=..;Database=..;Password=..;"
+
+    dotnet ef dbcontext scaffold "Server=...;Database=...;User Id=...;Password=..." Microsoft.EntityFrameworkCore.SqlServer -o Models --> Scaffold DbContext (Var Olan DB'den Kod Üretme)
+
+
+Crud İşlemleri;
+_______________
+    Create-ekleme-;
+    
+        using (var context = new AppDbContext())
+        {
+            var product = new Product { Name = "Kalem", Price = 5.5m", CategoryId =1};
+            context.Products.Add(product);
+            context.SaveChanges();
+        }
+
+    
+    Toplu Ekleme-;
+
+        context.Products.AddRange(
+            new Product { Name = "Defter", Price = 10m, CategoryId = 1},
+            new Product { Name = "Silgi", Price = 3m, CategoryId = 1}
+        );
+        context.SaveChanges();
+    
+
+    Okuma-Read-;
+
+        var product = context.Products.Find(1); //primary key ile bulunur
+        var singleProduct = context.Products.FirstOrDefault(p => p.Name = "Kalem");
+        var allProducts = context.Products.ToList();
+
+    
+    Filtreleme;
+
+        var expensiveProducts = context.Products
+                    .Where(p => p.Price > 10)
+                    .OrderByDescending(p => p.Price)
+                    .ToList();
+    
+    Select ile Projection;
+
+        var productDtos = context.Products
+                    .Select(p => new {p.Id, p.Name, p.Price})
+                    .ToList();
+
+    
+    Güncelleme-update-;
+
+        var product = context.Products.Find(1);
+        product.Price = 6.0m;
+        context.SaveChanges();
+
+    
+    Silme-delete-;
+
+        var product = context.Products.Find(1);
+        context.Products.Renmove(product);
+        context.SaveChanges();
+
+    
+    Kısmi Güncelleme -detached entity-;
+
+        var product = new Product {Id = 1, Price = 7.0m};
+        context.Entry(product).State = EntityState.Modified;
+        context.SaveChanges();
+
+    
+    Eager Loading Include-;
+
+        var productsWithCategories = context.Products
+                .Include(p => p.Category)
+                .ThenInclude(p => p.Orders)
+                .ToList();
+        
+    
+    ThenInclude -derin navigasyon-;
+
+        var categoriesWithProductsAndOrders = context.Categories
+                .Include(c => c.Products)
+                .ThenInclude(p => p.Orders)
+                .ToList();
+
+    
+    LazyLoading;
+
+        Dependcy --> dotnet add package Microsoft.EntityFrameworkCore.Proxies
+
+        kullanımı -->
+
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+                optionsBuilder.UseSqlServer("...").UseLazyLoadingProxies();
+            }
+    Explicit Loading;
+
+        var category = context.Categories.Find(1);
+        context.Entry(category).Collection(c => c.Products).Load();
+
+    
+    GroupBy;
+
+        var categoryCounts = context.Products
+                .GroupBy(p => p.CategoryId)
+                .Select(g => new {CategoryId = g.Key, Count = g.Count() })
+                .ToList();
+
+    
+    Joins/Raw SQL;
+
+        var products = context.Products
+                .FromSqlRaw("SELECT * FROM Products WHERE Price > {0}",10)
+                .ToList();
+
+    
+    Fluent API / Data Annotations;
+
+        modelBuilder.Entity<Product>()
+                .HasIndex(p => p.Name)
+                .IsUnique();
+
+        
+    Veri Tipi Haritalam;
+
+        modelBuilder.Entity<Product>()
+                .Property(p => p.Price)
+                .HasColumnType("decimal(18,2)");
+
+
+
+Concurrency (Eşzamanlılık) Yönetimi;
+____________________________________
+        RowVersion (Timestamp) Kullanımı;
+        ________________________________
+
+                public class Product
+                {
+                    public int Id { get; set; }
+                    public string Name { get; set; }
+                    public decimal Price { get; set; }
+
+                    [Timestamp]
+                    public byte[] RowVersion { get; set; }
+                }
+
+
+Shadow Properties (Gölgeli Özellikler);
+______________________________________
+            modelBuilder.Entity<Product>()
+                .Property<DateTime>("LastUpdated");
+Kullanım:
+
+            context.Entry(product).Property("LastUpdated").CurrentValue = DateTime.Now;
+
+Owned Types;
+____________
+            public class Address
+            {
+                public string Street { get; set; }
+                public string City { get; set; }
+            }
+            public class Customer
+            {
+                public int Id { get; set; }
+                public Address ShippingAddress { get; set; }
+            }
+
+            modelBuilder.Entity<Customer>().OwnsOne(c => c.ShippingAddress);
+
+
+Value Conversions (Enum -> string vb.);
+_______________________________________
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Status)
+                .HasConversion<string>();
+
+
+Performans İpuçları;
+____________________
+
+    *- AsNoTracking(): Okuma sorgularında değişiklik izleme gerekmediğinde kullanın.
+
+    var products = context.Products.AsNoTracking().ToList();
+
+
+    *- Split Queries (EF Core 5+): Büyük, karmaşık sorguların parçalara bölünerek verilmesi.
+
+    var result = context.Categories
+            .AsSplitQuery()
+            .Include(c => c.Products)
+            .ToList();
+
+    *-Compiled Queries: Sık kullanılan sorguları önceden derleyerek performans kazanımı sağlayın.
+
+    static readonly Func<AppDbContext, decimal, IEnumerable<Product>> _compiledQuery =
+        EF.CompileQuery((AppDbContext ctx, decimal price) =>
+            ctx.Products.Where(p => p.Price > price));
+
+    var highPriceProducts = _compiledQuery(context, 100);
+
+
+    *-NoTracking With Identity Resolution (AsNoTrackingWithIdentityResolution): Tekrarlayan entity örneklerini engeller.
+    
+    var products = context.Products.AsNoTrackingWithIdentityResolution().ToList();
+
+
+Test Ortamında EF Kullanımı;
+____________________________
+
+    InMemory Provider;
+
+    var options = new DbContextOptionsBuilder<AppDbContext>()
+        .UseInMemoryDatabase("TestDb")
+        .Options;
+
+    using var context = new AppDbContext(options);
+
+// Test kodlarınızı context ile çalıştırın.
+
+    *- Sqlite In-Memory: Daha gerçekçi testler için SQLite in-memory veritabanını kullanın.
+
+    var connection = new SqliteConnection("Filename=:memory:");
+    connection.Open();
+
+    var options = new DbContextOptionsBuilder<AppDbContext>()
+        .UseSqlite(connection)
+        .Options;
+

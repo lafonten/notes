@@ -1,0 +1,62 @@
+    Available linux shells ;
+
+/bin/sh 
+/bin/bash
+/usr/bin/bash
+/bin/rbash
+/usr/bin/rbash
+/bin/dash
+/usr/bin/dash
+/usr/bin/tmux
+/usr/bin/screen
+/bin/zsh
+/usr/bin/zsh
+
+
+shell bayrağı ;
+#!/bin/bash --> bu komutu script başına yazarız ve bu sayede komutlar shell de çalışır
+chmod +x --> executable izini verir
+
+echo -> print gibidir ekrana yazdırır
+read -> input gibidir istek yapılmasıdır
+
+        echo "test:"
+        read name
+        echo "Welcome, $name"
+
+
+for loop syntax;
+
+for i in {rangestart..rangeend};
+do
+#process
+echo $i
+done
+
+
+conditional;
+
+echo "test"
+read name
+if ["$name" = "test"]; then
+        echo "right"
+elif ["$name" eq "test2"];then
+        echo "half-right"
+else
+        echo "wrong"
+fi
+
+değişken tanımlama;
+
+username=""
+companyname=""
+pin=""
+
+
+&& --> ve 
+= - eq --> aynı
+
+
+
+
+

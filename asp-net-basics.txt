@@ -1,0 +1,121 @@
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.MapStaticAssets();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+app.MapGet("/", () => "Hello World!");
+
+app.Run();     
+        
+        UseHttpsRedirection: HTTP isteklerini HTTPS'ye yönlendirir.
+        UseRouting: İstekleri uç noktalara eşlemek için yönlendirmeyi etkinleştirir.
+        MapStaticAssets: HTML, CSS, JavaScript, görüntüler ve diğer varlıklar gibi statik dosyaların teslimini iyileştirir.
+        UseAuthentication: Kimlik doğrulama özellikleri ekler.
+        UseAuthorization: Yetkilendirme özellikleri ekler.
+        app.MapGet: Bu, uygulamanın çalıştığını göstermek için basit bir uç noktadır.
+
+
+########################################################
+
+
+public class MyDbContext : DbContext
+{
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
+    
+    public DbSet<Product> Products { get; set; } = default!;
+}
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var app = builder.Build();
+
+app.Run();
+
+
+
+
+                DbContext bağımlılık ekleme kullanılarak hizmet olarak yapılandırılır.
+                WebApplicationBuilder, uygulamayı yapılandırmak için kullanılır.
+                yöntemi, AddDbContext bağımlılık ekleme kapsayıcısıyla öğesini DbContext kaydeder.
+                bağlantı dizesi yapılandırmadan alınır ve veritabanı bağlamını ayarlamak için kullanılır.
+
+
+
+appsetting.json dosyasında bağlantı dizesi yapılandırma:
+
+JSON
+
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;"
+  }
+}
+Program.cs dosyasında:
+
+C#
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var app = builder.Build();
+
+app.Run();
+
+Önceki kodla:
+
+bağlantı dizesi appsettings.json dosyasında yapılandırılır.
+WebApplicationBuilder, uygulamayı yapılandırmak için kullanılır.
+yöntemi, AddDbContext bağımlılık ekleme kapsayıcısıyla öğesini DbContext kaydeder.
+bağlantı dizesi yapılandırmadan alınır ve veritabanı bağlamını ayarlamak için kullanılır.
+
+
+################################################
+        var builder = WebApplication.CreateBuilder(args);
+
+        // Add services to the container.
+        builder.Services.AddRazorComponents()
+            .AddInteractiveServerComponents();
+
+        var app = builder.Build();
+
+        // Configure the HTTP request pipeline.
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Error", createScopeForErrors: true);
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseAntiforgery();
+
+        app.MapStaticAssets();
+        app.MapRazorComponents<App>()
+            .AddInteractiveServerRenderMode();
+
+        app.Run();
+
+
+Önceki kodda:
+
+app.UseExceptionHandler() özel durumları yakalayan ve bir hata sayfası döndüren bir ara yazılım bileşeni ekler.
+app.UseHsts() Strict-Transport-Security üst bilgisini ayarlayan bir ara yazılım bileşeni ekler.
+app.UseHttpsRedirection() HTTP isteklerini HTTPS'ye yönlendiren bir ara yazılım bileşeni ekler.
+app.UseAntiforgery() siteler arası istek sahteciliği (CSRF) saldırılarını önleyen bir ara yazılım bileşeni ekler.
+app.MapStaticAssets() ve app.MapRazorComponents<App>() rotaları uç noktalara eşleyerek uç nokta yönlendirme ara yazılımı tarafından işlenir. Uç nokta yönlendirme ara yazılımı, tarafından WebApplicationBuilderörtük olarak eklenir.
+

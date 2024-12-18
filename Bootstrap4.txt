@@ -1,0 +1,362 @@
+Bootstrap 4
+
+1. Grid Sistemi-Temel Yapı;
+___________________________
+
+        * Bootstrap 4'ün grid sistemi 12 sütundan oluşur.
+
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-6">Sütun 1</div>
+                    <div class="col-md-6">Sütun 2</div>
+                </div>
+                </div>
+
+        Özellikleri;
+
+            container → Sabit genişlikte bir kapsayıcı.
+            container-fluid → Tüm genişliği kaplayan kapsayıcı.
+            row → Satır oluşturur.
+            col- → Sütun oluşturur. Sınıflar:
+            col- → Tüm ekran boyutları.
+            col-sm- → Küçük ekran (≥576px).
+            col-md- → Orta ekran (≥768px).
+            col-lg- → Büyük ekran (≥992px).
+            col-xl- → Çok büyük ekran (≥1200px).
+
+
+        Otomatik Sütun Genişliği;
+                
+                <div class="row">
+                <div class="col">Otomatik 1</div>
+                <div class="col">Otomatik 2</div>
+                </div>
+
+2. Margin ve Padding;
+_____________________
+
+    Spacing Sınıfları;
+        *Bootstrap 4'te m- (margin) ve p- (padding) sınıfları kullanılır.
+
+            m- → Margin
+            p- → Padding
+
+           Sınıf	    Açıklama
+            m-0	        Margin: 0
+            m-1	        Margin: 0.25rem
+            m-2	        Margin: 0.5rem
+            m-3	        Margin: 1rem
+            m-4	        Margin: 1.5rem
+            m-5	        Margin: 3rem
+            p-1	        Padding: 0.25rem
+
+    Yön Sınıfları;
+
+            t → Top
+            b → Bottom
+            l → Left
+            r → Right
+            x → Left & Right
+            y → Top & Bottom
+        
+        <div class="p-3 m-2">Boşluklu kutu</div>
+
+
+3. Renkler;
+__________
+    Metin Renkleri;
+       
+        <p class="text-primary">Mavi metin</p>
+        <p class="text-success">Yeşil metin</p>
+        <p class="text-danger">Kırmızı metin</p>
+        <p class="text-warning">Sarı metin</p>
+        <p class="text-muted">Gri metin</p>
+
+    Arka Plan Renkleri;
+
+        <div class="bg-primary text-white">Mavi arkaplan</div>
+        <div class="bg-danger text-white">Kırmızı arkaplan</div>
+
+4. Butonlar;
+____________
+    Temel Butonlar;
+
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-danger">Danger</button>
+
+    Boyutlandırma;
+
+        <button class="btn btn-sm btn-primary">Küçük</button>
+        <button class="btn btn-lg btn-primary">Büyük</button>
+
+    Buton Grupları;
+
+        <div class="btn-group">
+        <button class="btn btn-primary">1</button>
+        <button class="btn btn-primary">2</button>
+        </div>
+
+5. Metin Hizalama;
+__________________
+    Yatay Hizalama;
+
+        <p class="text-left">Sola hizalı</p>
+        <p class="text-center">Ortalanmış</p>
+        <p class="text-right">Sağa hizalı</p>
+
+    Dikey Hizalama;
+        Flexbox kullanarak:
+
+        <div class="d-flex align-items-center" style="height: 100px;">
+        Ortalanmış içerik
+        </div>
+
+
+6. Görünürlük ve Gizleme;
+_________________________
+    Display Sınıfları;
+
+        <div class="d-none d-md-block">Sadece orta ve büyük ekranlarda görünür</div>
+
+        Sınıf	        Açıklama
+        d-none	        Görünmez
+        d-inline	    Satır içi
+        d-block	        Blok eleman
+        d-flex	        Flexbox düzeni
+
+7. Kartlar;
+___________
+
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="resim.jpg" alt="Başlık">
+        <div class="card-body">
+            <h5 class="card-title">Kart Başlığı</h5>
+            <p class="card-text">Kart içeriği...</p>
+            <a href="#" class="btn btn-primary">Git</a>
+        </div>
+        </div>
+
+8. Navbar (Navigasyon Çubuğu);
+______________________________
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Marka</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="#">Anasayfa</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Hakkımızda</a></li>
+            </ul>
+        </div>
+        </nav>
+
+9. Modals (Popup Penceresi);
+___________________________
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Aç</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Başlık</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">İçerik...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+10. İlerleme Çubukları (Progress Bars);
+_______________________________________
+        <div class="progress">
+        <div class="progress-bar" style="width: 50%;">50%</div>
+        </div>
+
+
+11. Flexbox Yardımcı Sınıfları;
+_______________________________
+    *Bootstrap 4'te Flexbox kullanımı için hazır sınıflar vardır.
+
+    Flex Yönü;
+
+        <div class="d-flex flex-row">Yatay Hizalama</div>
+        <div class="d-flex flex-column">Dikey Hizalama</div>
+
+    flex-row → Yatay (varsayılan)
+    flex-column → Dikey
+    flex-row-reverse → Yatay ters
+    flex-column-reverse → Dikey ters
+
+    İçerik Hizalama;
+
+        <div class="d-flex justify-content-between">
+        <div>Sol</div>
+        <div>Sağ</div>
+        </div>
+
+    justify-content-start → Sola hizalar.
+    justify-content-center → Ortalar.
+    justify-content-end → Sağa hizalar.
+    justify-content-between → Aralarına eşit boşluk ekler.
+
+    Dikey Hizalama;
+
+        <div class="d-flex align-items-center">
+        <p>Orta hizalı</p>
+        </div>
+
+    align-items-start → Üste hizalar.
+    align-items-center → Ortaya hizalar.
+    align-items-end → Alta hizalar.
+    12. Float Yardımcı Sınıfları
+    float-left → Sola hizalar.
+    float-right → Sağa hizalar.
+    float-none → Float etkisini kaldırır.
+
+        <img src="image.jpg" class="float-left" alt="Sol">
+
+13. Gömülü Videolar (Responsive Media);
+_________________________________________
+    *Bootstrap ile video ve iframe içeriklerini orantılı hale getirebilirsin.
+
+        <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/example" allowfullscreen></iframe>
+        </div>
+
+    embed-responsive-16by9 → 16:9 oranı
+    embed-responsive-4by3 → 4:3 oranı
+
+14. Görseller;
+______________
+    Responsive Görseller;
+
+        <img src="image.jpg" class="img-fluid" alt="Responsive Görsel">
+
+    img-fluid → Görselin genişliğini otomatik ayarlar.
+
+
+    Yuvarlak Köşe Görseller;
+        
+        <img src="image.jpg" class="rounded" alt="Yuvarlak Köşe">
+
+    Tamamen Yuvarlak Görseller;
+
+        <img src="image.jpg" class="rounded-circle" alt="Daire Görsel">
+
+
+15. Çıktılar (Jumbotron);
+_________________________
+    Jumbotron büyük başlıklar ve içerikler için kullanılır.
+
+        <div class="jumbotron">
+        <h1 class="display-4">Merhaba!</h1>
+        <p class="lead">Bu bir Jumbotron örneğidir.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Daha fazla bilgi</a>
+        </div>
+
+16. BreadCrumb (Sayfa Yolu);
+____________________________
+
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sayfa</li>
+        </ol>
+        </nav>
+
+
+17. Alerts (Uyarılar);
+______________________
+
+        <div class="alert alert-success" role="alert">Başarılı işlem!</div>
+        <div class="alert alert-danger" role="alert">Hata oluştu!</div>
+        <div class="alert alert-warning" role="alert">Uyarı!</div>
+
+    Kapatılabilir Alerts;
+
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        Bilgilendirme mesajı.
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+
+
+18. Tooltip (Bilgi Balonları);
+______________________________
+    *Tooltip kullanımı için JavaScript eklentisini eklemelisin.
+
+        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip mesajı">
+        Üzerine gel
+        </button>
+
+19. Popover (Popup Bilgiler);
+_____________________________
+
+        <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Başlık" data-content="Detaylı bilgi burada.">
+        Popover butonu
+        </button>
+
+    JavaScript ile Aktif Et;
+
+        javascript
+        Copy code
+        $(function () {
+        $('[data-toggle="popover"]').popover();
+        });
+
+
+20. Spinner (Yükleniyor Efekti);
+________________________________
+    Yüklenme animasyonu için:
+
+        <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Yükleniyor...</span>
+        </div>
+
+    Renk ve Boyut;
+
+        spinner-border → Çizgi animasyonu
+        spinner-grow → Büyüme animasyonu
+        text-danger, text-success → Renk ekler.
+
+
+21. List Groups;
+________________
+    
+    Liste içeriklerini stillendirmek için:
+
+        <ul class="list-group">
+        <li class="list-group-item">Öğe 1</li>
+        <li class="list-group-item">Öğe 2</li>
+        </ul>
+    
+    
+    Aktif ve Seçili Öğe;
+        
+        <li class="list-group-item active">Aktif Öğe</li>
+
+
+22. Scrollspy (Sayfa Kaydırma İzleyici);
+_______________________________________
+
+        <body data-spy="scroll" data-target="#navbar-example">
+        <nav id="navbar-example" class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">Menü</a>
+        </nav>
+        <div id="section1" class="container">Bölüm 1</div>
+        <div id="section2" class="container">Bölüm 2</div>
+        </body>
+
+
+23. Collapse (Açılır/Kapanır İçerik);
+____________________________________
+
+        <a data-toggle="collapse" href="#content">Göster</a>
+        <div id="content" class="collapse">
+        Bu içerik açılır/kapanır.
+        </div>
